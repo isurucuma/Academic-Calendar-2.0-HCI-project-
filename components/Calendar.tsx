@@ -98,7 +98,9 @@ function Calendar({}: Props) {
               <div className="px-3">*</div>
               <p className="mx-auto">Holiday</p>{" "}
             </div>
-            {clicked && index === i ? <WeekSummery week={data} /> : null}
+            {clicked && index === i ? (
+              <WeekSummery {...{ weekNo: i + 1 }} />
+            ) : null}
           </>
         ))}
       </div>

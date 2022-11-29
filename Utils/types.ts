@@ -16,6 +16,7 @@ export interface day {
 }
 
 export interface week {
+  id: number;
   monday?: day;
   tuesday?: day;
   wednesday?: day;

@@ -1,17 +1,19 @@
 import React, { FunctionComponent } from "react";
 import { week, deadlineType } from "../Utils/types";
 
-interface Props {}
+interface Props {
+  weekNo: number;
+}
 
-const WeekSummery: FunctionComponent<Props> = ({}: Props) => {
+const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
   const [loading, isLoading] = React.useState(true);
-  const [weekData, setWeekData] = React.useState<week>({});
+  const [weekData, setWeekData] = React.useState<week>({ id: 0 });
 
   React.useEffect(() => {
     // setTimeout(() => {
     //   isLoading(false);
     // }, 2000);
-    fetch("http://localhost:3000/api/getWeekData")
+    fetch(`http://localhost:3000/api/getWeekData/${weekNo}`)
       .then((res) => res.json())
       .then((data: week) => {
         console.log(data);

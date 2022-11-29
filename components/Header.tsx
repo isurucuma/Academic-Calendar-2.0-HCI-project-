@@ -12,7 +12,7 @@ function Header({ setIsDark, isDark }: Props) {
       <h1 className="text-lg">Academic Calendar</h1>
       <p className="text-sm">Home/Academic Calendar</p>
       <ThemeSwitch
-        className="absolute top-3 right-4"
+        className="absolute top-12 right-4"
         onClick={() => {
           setIsDark(!isDark);
           console.log("isDark: ", isDark);

@@ -24,7 +24,7 @@ const DropDown: FunctionComponent<Props> = ({ items, label }: Props) => {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
+      <FormControl sx={{ minWidth: 120, m: 1 }} size="small">
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"

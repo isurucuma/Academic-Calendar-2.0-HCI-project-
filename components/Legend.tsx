@@ -20,8 +20,8 @@ function Legend({}: Props) {
   }, []);
   return (
     <div
-      className={`${scrolled ? "ease-in-out duration-300 fixed  top-[40px] translate-x-1/2" : ""}`}
-      style={{ right: "calc(50% - 540px)" }}
+      className={`hidden lg:block  ${scrolled ? " duration-300 fixed top-[40px] translate-x-1/2" : ""}  `}
+      style={{ right: "calc(50% - 630px)" }}
     >
       <div className="w-[300px] p-8 border border-gray-300 rounded-2xl border-1  bg-gray-200">
         <div className="flex items-center mb-4">

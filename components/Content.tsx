@@ -1,17 +1,17 @@
 import React from "react";
 import Calendar from "./Calendar";
-import Filters from "./Filters";
 import Legend from "./Legend";
 
 type Props = {};
 
 function Content({}: Props) {
   return (
-    <main className="w-[1400px] mx-auto my-12">
-      <Filters />
-      <div className="flex gap-10 overflow-auto">
-        <Calendar />
-        <Legend />
+    <main>
+      <div className="mx-5 my-12 ">
+        <div className="flex justify-center gap-10 mx-auto">
+          <Calendar />
+          <Legend />
+        </div>
       </div>
     </main>
   );

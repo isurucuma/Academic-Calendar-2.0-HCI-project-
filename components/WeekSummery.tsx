@@ -40,21 +40,11 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
         </div>
       ) : (
         <div className="grid grid-cols-5 col-span-6 px-3 py-4 duration-300 ease-in-out border border-black rounded-md border-1">
-          <div className="flex items-center justify-center border-b border-gray-400 border-1">
-            Monday
-          </div>
-          <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">
-            Tuesday
-          </div>
-          <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">
-            Wednesday
-          </div>
-          <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">
-            Thursday
-          </div>
-          <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">
-            Friday
-          </div>
+          <div className="flex items-center justify-center border-b border-gray-400 border-1">Monday</div>
+          <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">Tuesday</div>
+          <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">Wednesday</div>
+          <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">Thursday</div>
+          <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">Friday</div>
 
           <div className="flex items-center justify-start h-20 p-3 text-sm border-gray-400 border-1">
             {weekData.tuesday?.tasks &&
@@ -66,14 +56,14 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                   color = "bg-yellow-500";
                 }
                 return (
-                  <>
+                  <div key={index}>
                     <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
                     <div className="">
                       <p>{item.deadlineName}</p>
                       <p>{item.due}</p>
                       {item.moduleName ? <p>{item.moduleName}</p> : null}
                     </div>
-                  </>
+                  </div>
                 );
               })}
           </div>
@@ -99,7 +89,7 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                 );
               })}
           </div>
-          <div className="flex items-center justify-start h-20 text-sm p-3 border-l border-gray-400 border-1">
+          <div className="flex items-center justify-start h-20 p-3 text-sm border-l border-gray-400 border-1">
             {weekData.wednesday?.tasks &&
               weekData.wednesday.tasks.map((item, index) => {
                 let color = "bg-pink-500";

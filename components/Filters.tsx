@@ -6,10 +6,7 @@ type Props = {};
 function Filters({}: Props) {
   return (
     <>
-      <div className="flex items-center gap-4 px-12 m-4">
-        <div className="flex items-center justify-center h-10 border border-black rounded-md w-[15rem] border-1 mr-28">
-          Dates
-        </div>
+      <div className="items-center justify-center w-full gap-4 px-12 mx-auto md:flex">
         <DropDown
           items={[
             { name: "2023", value: "2023" },
@@ -37,7 +34,7 @@ function Filters({}: Props) {
             { name: "Civil Engineering", value: "Civil Engineering" },
             { name: "Inter Disciplinary Studies", value: "Inter disciplinary Studies" },
           ]}
-          label={"Department"}
+          label={"Dept"}
         />
       </div>
     </>

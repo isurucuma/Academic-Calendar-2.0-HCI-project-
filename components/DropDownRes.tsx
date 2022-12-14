@@ -27,8 +27,18 @@ export default function DialogSelect() {
 
   return (
     <div>
-      <Button onClick={handleClickOpen}>Filter options</Button>
-      <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
+      <Button
+        variant="outlined"
+        style={{
+          borderRadius: 5,
+          padding: 6,
+        }}
+        onClick={handleClickOpen}
+        className="text-black border border-black dark:border-white dark:text-white border-1"
+      >
+        Filter options
+      </Button>
+      <Dialog disableEscapeKeyDown open={open} onClose={handleClose} className="dark:bg-darkTheme">
         <DialogTitle>Choose filters</DialogTitle>
         <DialogContent>
           <Filters />

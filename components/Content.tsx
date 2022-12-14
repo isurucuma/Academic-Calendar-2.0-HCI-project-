@@ -10,7 +10,7 @@ function Content({}: Props) {
       <div className="mx-5 my-12 ">
         <div className="flex justify-center gap-10 mx-auto">
           <Calendar />
-          <Legend />
+          {/* <Legend /> */}
         </div>
       </div>
     </main>

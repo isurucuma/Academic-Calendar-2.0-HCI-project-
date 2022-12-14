@@ -7,9 +7,11 @@ export default function Home() {
   const [isDark, setIsDark] = useState<boolean>(false);
   return (
     <div className={isDark ? "dark" : ""}>
-      <Header {...{ setIsDark, isDark }} />
-      <Content />
-      <Footer />
+      <div className="dark:bg-darkTheme ">
+        <Header {...{ setIsDark, isDark }} />
+        <Content />
+        <Footer />
+      </div>
     </div>
   );
 }

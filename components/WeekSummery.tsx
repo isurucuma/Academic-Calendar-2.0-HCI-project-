@@ -13,7 +13,8 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
     // setTimeout(() => {
     //   isLoading(false);
     // }, 2000);
-    fetch(`http://localhost:3000/api/getWeekData/${weekNo}`)
+    fetch(`http://192.168.8.101:3000/api/getWeekData/${weekNo}`)
+      // fetch(`http://localhost:3000/api/getWeekData/${weekNo}`)
       .then((res) => res.json())
       .then((data: week) => {
         console.log(data);
@@ -39,118 +40,268 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-5 col-span-6 px-3 py-4 duration-300 ease-in-out border border-black rounded-md border-1">
-          <div className="flex items-center justify-center border-b border-gray-400 border-1">Monday</div>
-          <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">Tuesday</div>
-          <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">Wednesday</div>
-          <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">Thursday</div>
-          <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">Friday</div>
-
-          <div className="flex items-center justify-start h-20 p-3 text-sm border-gray-400 border-1">
-            {weekData.tuesday?.tasks &&
-              weekData.tuesday.tasks.map((item, index) => {
-                let color = "bg-pink-500";
-                if (item.type === deadlineType.assignment) {
-                  color = "bg-blue-500";
-                } else if (item.type === deadlineType.lab) {
-                  color = "bg-yellow-500";
-                }
-                return (
-                  <div key={index}>
-                    <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
-                    <div className="">
-                      <p>{item.deadlineName}</p>
-                      <p>{item.due}</p>
-                      {item.moduleName ? <p>{item.moduleName}</p> : null}
-                    </div>
+        <div className="col-span-6">
+          <div className="hidden col-span-6 md:block">
+            <div className="grid grid-cols-5 col-span-6 px-3 py-4 duration-300 ease-in-out border border-black rounded-md border-1">
+              <div className="flex items-center justify-center border-b border-gray-400 border-1 text-truncate">
+                Monday
+              </div>
+              <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">Tuesday</div>
+              <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">
+                Wednesday
+              </div>
+              <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">
+                Thursday
+              </div>
+              <div className="flex items-center justify-center border-b border-l border-gray-400 border-1">Friday</div>
+              <div className="flex items-center justify-start p-3 text-sm border-gray-400 md:h-20 border-1">
+                {weekData.tuesday?.tasks &&
+                  weekData.tuesday.tasks.map((item, index) => {
+                    let color = "bg-pink-500";
+                    if (item.type === deadlineType.assignment) {
+                      color = "bg-blue-500";
+                    } else if (item.type === deadlineType.lab) {
+                      color = "bg-yellow-500";
+                    }
+                    return (
+                      <div key={index}>
+                        <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                        <div className="">
+                          <p>{item.deadlineName}</p>
+                          <p>{item.due}</p>
+                          {item.moduleName ? <p>{item.moduleName}</p> : null}
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+              <div className="flex items-center justify-start h-20 p-3 text-sm border-l border-gray-400 border-1">
+                {weekData.monday?.tasks &&
+                  weekData.monday.tasks.map((item, index) => {
+                    let color = "bg-pink-500";
+                    if (item.type === deadlineType.assignment) {
+                      color = "bg-blue-500";
+                    }
+                    if (item.type === deadlineType.lab) {
+                      color = "bg-yellow-500";
+                    }
+                    return (
+                      <>
+                        <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                        <div className="">
+                          <p>{item.deadlineName}</p>
+                          <p>{item.due}</p>
+                          {item.moduleName ? <p>{item.moduleName}</p> : null}
+                        </div>
+                      </>
+                    );
+                  })}
+              </div>
+              <div className="flex items-center justify-start h-20 p-3 text-sm border-l border-gray-400 border-1">
+                {weekData.wednesday?.tasks &&
+                  weekData.wednesday.tasks.map((item, index) => {
+                    let color = "bg-pink-500";
+                    if (item.type === deadlineType.assignment) {
+                      color = "bg-blue-500";
+                    } else if (item.type === deadlineType.lab) {
+                      color = "bg-yellow-500";
+                    }
+                    return (
+                      <>
+                        <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                        <div className="">
+                          <p>{item.deadlineName}</p>
+                          <p>{item.due}</p>
+                          {item.moduleName ? <p>{item.moduleName}</p> : null}
+                        </div>
+                      </>
+                    );
+                  })}
+              </div>
+              <div className="flex items-center justify-start h-20 p-3 text-sm border-l border-gray-400 border-1">
+                {weekData.thursday?.tasks &&
+                  weekData.thursday.tasks.map((item, index) => {
+                    let color = "bg-pink-500";
+                    if (item.type === deadlineType.assignment) {
+                      color = "bg-blue-500";
+                    } else if (item.type === deadlineType.lab) {
+                      color = "bg-yellow-500";
+                    }
+                    return (
+                      <>
+                        <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                        <div className="">
+                          <p>{item.deadlineName}</p>
+                          <p>{item.due}</p>
+                          {item.moduleName ? <p>{item.moduleName}</p> : null}
+                        </div>
+                      </>
+                    );
+                  })}
+              </div>
+              <div className="flex items-center justify-start h-20 p-3 text-sm border-l border-gray-400 border-1">
+                {weekData.friday?.tasks &&
+                  weekData.friday.tasks.map((item, index) => {
+                    let color = "bg-pink-500";
+                    if (item.type === deadlineType.assignment) {
+                      color = "bg-blue-500";
+                    } else if (item.type === deadlineType.lab) {
+                      color = "bg-yellow-500";
+                    }
+                    return (
+                      <>
+                        <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                        <div className="">
+                          <p>{item.deadlineName}</p>
+                          <p>{item.due}</p>
+                          {item.moduleName ? <p>{item.moduleName}</p> : null}
+                        </div>
+                      </>
+                    );
+                  })}
+              </div>
+            </div>
+          </div>
+          <div className="md:hidden">
+            <div
+              className={`grid col-span-6 grid-rows-${
+                Object.keys(weekData).length - 1
+              } px-3 py-4 duration-300 ease-in-out border border-black rounded-md border-1`}
+            >
+              {weekData.monday?.tasks && (
+                <div className="grid items-center justify-center grid-cols-6 pb-2 border-b border-gray-400 border-1">
+                  <p className="justify-start col-span-2 p-2 text-sm border-r border-gray-400 border-1">Monday</p>
+                  <div className="flex items-center justify-start text-sm ">
+                    {weekData.monday?.tasks &&
+                      weekData.monday.tasks.map((item, index) => {
+                        let color = "bg-pink-500";
+                        if (item.type === deadlineType.assignment) {
+                          color = "bg-blue-500";
+                        }
+                        if (item.type === deadlineType.lab) {
+                          color = "bg-yellow-500";
+                        }
+                        return (
+                          <div key={index} className="flex items-center gap-3 px-2">
+                            <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                            <div className="">
+                              <p>{item.deadlineName}</p>
+                              <p>{item.due}</p>
+                              {item.moduleName ? <p>{item.moduleName}</p> : null}
+                            </div>
+                          </div>
+                        );
+                      })}
                   </div>
-                );
-              })}
-          </div>
-          <div className="flex items-center justify-start h-20 p-3 text-sm border-l border-gray-400 border-1">
-            {weekData.monday?.tasks &&
-              weekData.monday.tasks.map((item, index) => {
-                let color = "bg-pink-500";
-                if (item.type === deadlineType.assignment) {
-                  color = "bg-blue-500";
-                }
-                if (item.type === deadlineType.lab) {
-                  color = "bg-yellow-500";
-                }
-                return (
-                  <>
-                    <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
-                    <div className="">
-                      <p>{item.deadlineName}</p>
-                      <p>{item.due}</p>
-                      {item.moduleName ? <p>{item.moduleName}</p> : null}
-                    </div>
-                  </>
-                );
-              })}
-          </div>
-          <div className="flex items-center justify-start h-20 p-3 text-sm border-l border-gray-400 border-1">
-            {weekData.wednesday?.tasks &&
-              weekData.wednesday.tasks.map((item, index) => {
-                let color = "bg-pink-500";
-                if (item.type === deadlineType.assignment) {
-                  color = "bg-blue-500";
-                } else if (item.type === deadlineType.lab) {
-                  color = "bg-yellow-500";
-                }
-                return (
-                  <>
-                    <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
-                    <div className="">
-                      <p>{item.deadlineName}</p>
-                      <p>{item.due}</p>
-                      {item.moduleName ? <p>{item.moduleName}</p> : null}
-                    </div>
-                  </>
-                );
-              })}
-          </div>
-          <div className="flex items-center justify-start h-20 p-3 text-sm border-l border-gray-400 border-1">
-            {weekData.thursday?.tasks &&
-              weekData.thursday.tasks.map((item, index) => {
-                let color = "bg-pink-500";
-                if (item.type === deadlineType.assignment) {
-                  color = "bg-blue-500";
-                } else if (item.type === deadlineType.lab) {
-                  color = "bg-yellow-500";
-                }
-                return (
-                  <>
-                    <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
-                    <div className="">
-                      <p>{item.deadlineName}</p>
-                      <p>{item.due}</p>
-                      {item.moduleName ? <p>{item.moduleName}</p> : null}
-                    </div>
-                  </>
-                );
-              })}
-          </div>
-          <div className="flex items-center justify-start h-20 p-3 text-sm border-l border-gray-400 border-1">
-            {weekData.friday?.tasks &&
-              weekData.friday.tasks.map((item, index) => {
-                let color = "bg-pink-500";
-                if (item.type === deadlineType.assignment) {
-                  color = "bg-blue-500";
-                } else if (item.type === deadlineType.lab) {
-                  color = "bg-yellow-500";
-                }
-                return (
-                  <>
-                    <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
-                    <div className="">
-                      <p>{item.deadlineName}</p>
-                      <p>{item.due}</p>
-                      {item.moduleName ? <p>{item.moduleName}</p> : null}
-                    </div>
-                  </>
-                );
-              })}
+                </div>
+              )}
+              {weekData.tuesday?.tasks && (
+                <div className="grid items-center justify-center grid-cols-6 py-2 border-b border-gray-400 border-1">
+                  <p className="justify-start col-span-2 p-2 text-sm border-r border-gray-400 border-1">Tuesday</p>
+                  <div className="flex items-center justify-start text-sm ">
+                    {weekData.tuesday?.tasks &&
+                      weekData.tuesday.tasks.map((item, index) => {
+                        let color = "bg-pink-500";
+                        if (item.type === deadlineType.assignment) {
+                          color = "bg-blue-500";
+                        } else if (item.type === deadlineType.lab) {
+                          color = "bg-yellow-500";
+                        }
+                        return (
+                          <div key={index} className="flex items-center gap-3 px-2">
+                            <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                            <div className="">
+                              <p>{item.deadlineName}</p>
+                              <p>{item.due}</p>
+                              {item.moduleName ? <p>{item.moduleName}</p> : null}
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              )}
+              {weekData.wednesday?.tasks && (
+                <div className="grid items-center justify-center grid-cols-6 py-2 border-b border-gray-400 border-1">
+                  <p className="justify-start col-span-2 p-2 text-sm border-r border-gray-400 border-1">Wednesday</p>
+                  <div className="flex items-center justify-start text-sm ">
+                    {weekData.wednesday?.tasks &&
+                      weekData.wednesday.tasks.map((item, index) => {
+                        let color = "bg-pink-500";
+                        if (item.type === deadlineType.assignment) {
+                          color = "bg-blue-500";
+                        } else if (item.type === deadlineType.lab) {
+                          color = "bg-yellow-500";
+                        }
+                        return (
+                          <div key={index} className="flex items-center gap-3 px-2">
+                            <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                            <div className="">
+                              <p>{item.deadlineName}</p>
+                              <p>{item.due}</p>
+                              {item.moduleName ? <p>{item.moduleName}</p> : null}
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              )}
+              {weekData.thursday?.tasks && (
+                <div className="grid items-center justify-center grid-cols-6 py-2 border-b border-gray-400 border-1">
+                  <p className="justify-start col-span-2 p-2 text-sm border-r border-gray-400 border-1">Thursday</p>
+
+                  <div className="flex items-center justify-start text-sm ">
+                    {weekData.thursday?.tasks &&
+                      weekData.thursday.tasks.map((item, index) => {
+                        let color = "bg-pink-500";
+                        if (item.type === deadlineType.assignment) {
+                          color = "bg-blue-500";
+                        } else if (item.type === deadlineType.lab) {
+                          color = "bg-yellow-500";
+                        }
+                        return (
+                          <div key={index} className="flex items-center gap-3 px-2">
+                            <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                            <div className="">
+                              <p>{item.deadlineName}</p>
+                              <p>{item.due}</p>
+                              {item.moduleName ? <p>{item.moduleName}</p> : null}
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              )}
+              {weekData.friday?.tasks && (
+                <div className="grid items-center justify-center grid-cols-6 pt-2 border-gray-400 border-1">
+                  <p className="justify-start col-span-2 p-2 text-sm border-r border-gray-400 border-1">Friday</p>
+
+                  <div className="flex items-center justify-start text-sm ">
+                    {weekData.friday?.tasks &&
+                      weekData.friday.tasks.map((item, index) => {
+                        let color = "bg-pink-500";
+                        if (item.type === deadlineType.assignment) {
+                          color = "bg-blue-500";
+                        } else if (item.type === deadlineType.lab) {
+                          color = "bg-yellow-500";
+                        }
+                        return (
+                          <div key={index} className="flex items-center gap-3 px-2">
+                            <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                            <div className="w-full">
+                              <p>{item.deadlineName}</p>
+                              <p>{item.due}</p>
+                              {item.moduleName ? <p>{item.moduleName}</p> : null}
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

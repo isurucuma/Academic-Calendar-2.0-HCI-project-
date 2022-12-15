@@ -1,9 +1,10 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useContext } from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import { filterOn } from "./Content";
 
 interface Item {
   name: string;
@@ -17,9 +18,17 @@ interface Props {
 
 const DropDown: FunctionComponent<Props> = ({ items, label }: Props) => {
   const [name, setName] = React.useState("");
+  const context = useContext(filterOn);
 
   const handleChange = (event: { target: { value: React.SetStateAction<string> } }) => {
     setName(event.target.value);
+    if (label === "Batch") {
+      context.setFilters({ ...context.filters, Batch: event.target.value.toString() });
+    } else if (label === "Year") {
+      context.setFilters({ ...context.filters, Year: event.target.value.toString() });
+    } else {
+      context.setFilters({ ...context.filters, Dept: event.target.value.toString() });
+    }
   };
 
   return (

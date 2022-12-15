@@ -9,6 +9,5 @@ function Footer({}: Props) {
     </footer>
   );
 }
-// check profile
 
 export default Footer;

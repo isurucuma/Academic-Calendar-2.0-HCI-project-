@@ -5,6 +5,7 @@ export enum deadlineType {
 }
 
 export interface deadline {
+  department: string[];
   deadlineName: string;
   due: string;
   moduleName?: string;
@@ -23,3 +24,14 @@ export interface week {
   thursday?: day;
   friday?: day;
 }
+
+export interface filter {
+  Batch: string;
+  Year: string;
+  Dept: string;
+}
+
+export type FilterContextType = {
+  filters: filter;
+  setFilters: React.Dispatch<React.SetStateAction<filter>>;
+};

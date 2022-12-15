@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useContext } from "react";
 import { week, deadlineType } from "../Utils/types";
+import { filterOn } from "./Content";
 import DaySummery from "./micro_components/DaySummery";
 
 interface Props {
@@ -7,6 +8,8 @@ interface Props {
 }
 
 const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
+  const filter = useContext(filterOn);
+
   const [loading, isLoading] = React.useState(true);
   const [weekData, setWeekData] = React.useState<week>({ id: 0 });
 
@@ -14,11 +17,12 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
     setTimeout(() => {
       isLoading(false);
     }, 1000);
-    fetch(`http://10.102.11.189:3000/api/getWeekData/${weekNo}`)
+    fetch(`http://localhost:3000/api/getWeekData/${weekNo}`)
       // fetch(`http://localhost:3000/api/getWeekData/${weekNo}`)
       .then((res) => res.json())
       .then((data: week) => {
         console.log(data);
+
         setWeekData(data);
         // isLoading(false);
       });

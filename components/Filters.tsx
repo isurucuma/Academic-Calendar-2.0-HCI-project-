@@ -29,10 +29,11 @@ function Filters({}: Props) {
         />
         <DropDown
           items={[
+            { name: "Common", value: "Common" },
             { name: "Computer Engineering", value: "Computer Engineering" },
             { name: "EEE", value: "EEE" },
             { name: "Civil Engineering", value: "Civil Engineering" },
-            { name: "Inter Disciplinary Studies", value: "Inter disciplinary Studies" },
+            { name: "Inter Disciplinary Studies", value: "Inter Disciplinary Studies" },
           ]}
           label={"Dept"}
         />

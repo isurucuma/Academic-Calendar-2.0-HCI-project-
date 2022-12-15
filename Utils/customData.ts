@@ -6,6 +6,7 @@ export const WeekData: week[] = [
     monday: {
       tasks: [
         {
+          department: ["Computer Engineering"],
           deadlineName: "Lab-03",
           due: "11:59pm",
           moduleName: "HCI-EC0950",
@@ -16,9 +17,10 @@ export const WeekData: week[] = [
     tuesday: {
       tasks: [
         {
+          department: ["EEE"],
           deadlineName: "Assignment",
           due: "11:59pm",
-          moduleName: "Datamining-EC0960",
+          moduleName: "Data mining-EC0960",
           type: deadlineType.assignment,
         },
       ],
@@ -26,6 +28,7 @@ export const WeekData: week[] = [
     friday: {
       tasks: [
         {
+          department: ["Computer Engineering", "EEE"],
           deadlineName: "Exam Registration",
           due: "11:59pm",
           type: deadlineType.other,
@@ -38,6 +41,7 @@ export const WeekData: week[] = [
     wednesday: {
       tasks: [
         {
+          department: ["Computer Engineering"],
           deadlineName: "Lab-03",
           due: "11:59pm",
           moduleName: "HCI-EC0950",
@@ -48,9 +52,10 @@ export const WeekData: week[] = [
     tuesday: {
       tasks: [
         {
+          department: ["Computer Engineering", "EEE"],
           deadlineName: "Assignment",
           due: "11:59pm",
-          moduleName: "Datamining-EC0960",
+          moduleName: "Data mining-EC0960",
           type: deadlineType.assignment,
         },
       ],
@@ -58,6 +63,7 @@ export const WeekData: week[] = [
     friday: {
       tasks: [
         {
+          department: ["Common"],
           deadlineName: "Exam Registration",
           due: "11:59pm",
           type: deadlineType.other,
@@ -70,6 +76,7 @@ export const WeekData: week[] = [
     monday: {
       tasks: [
         {
+          department: ["Computer Engineering"],
           deadlineName: "Lab-03",
           due: "11:59pm",
           moduleName: "HCI-EC0950",
@@ -80,6 +87,7 @@ export const WeekData: week[] = [
     thursday: {
       tasks: [
         {
+          department: ["Computer Engineering"],
           deadlineName: "Assignment",
           due: "11:59pm",
           moduleName: "Datamining-EC0960",
@@ -90,6 +98,7 @@ export const WeekData: week[] = [
     friday: {
       tasks: [
         {
+          department: ["Computer Engineering"],
           deadlineName: "Exam Registration",
           due: "11:59pm",
           type: deadlineType.other,
@@ -102,6 +111,7 @@ export const WeekData: week[] = [
     monday: {
       tasks: [
         {
+          department: ["Computer Engineering"],
           deadlineName: "Lab-03",
           due: "11:59pm",
           moduleName: "HCI-EC0950",
@@ -112,6 +122,7 @@ export const WeekData: week[] = [
     friday: {
       tasks: [
         {
+          department: ["Computer Engineering"],
           deadlineName: "Exam Registration",
           due: "11:59pm",
           type: deadlineType.other,
@@ -124,6 +135,7 @@ export const WeekData: week[] = [
     monday: {
       tasks: [
         {
+          department: ["Computer Engineering"],
           deadlineName: "Lab-03",
           due: "11:59pm",
           moduleName: "HCI-EC0950",
@@ -134,6 +146,7 @@ export const WeekData: week[] = [
     tuesday: {
       tasks: [
         {
+          department: ["Computer Engineering"],
           deadlineName: "Assignment",
           due: "11:59pm",
           moduleName: "Datamining-EC0960",
@@ -144,6 +157,7 @@ export const WeekData: week[] = [
     friday: {
       tasks: [
         {
+          department: ["Computer Engineering"],
           deadlineName: "Exam Registration",
           due: "11:59pm",
           type: deadlineType.other,

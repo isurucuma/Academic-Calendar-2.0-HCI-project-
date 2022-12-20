@@ -1,82 +1,87 @@
 import React, { useState } from "react";
+import { addYears } from "date-fns";
+
 import Filters from "./Filters";
 import DialogSelect from "./DropDownRes";
 import WeekSummery from "./WeekSummery";
 
 type Props = {};
 const weeks = [
-  { label: "week1" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week1" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-  { label: "week2" },
-];
-
-const data = [
-  {
-    monday: {
-      name: "Applied algorithm",
-      type: "Assignment - 2",
-      time: "due at - 23.59",
-    },
-
-    wednesday: {
-      name: "HCI Lab",
-      type: "Lab - 4",
-      time: "13.00 -16.00",
-    },
-  },
+  { label: "week 1" },
+  { label: "week 2" },
+  { label: "week 3" },
+  { label: "week 4" },
+  { label: "week 5" },
+  { label: "week 6" },
+  { label: "week 7" },
+  { label: "Mid exam" },
+  { label: "week 9" },
+  { label: "week 10" },
+  { label: "week 11" },
+  { label: "week 12" },
+  { label: "week 13" },
+  { label: "week 14" },
+  { label: "Study leave" },
+  { label: "Examination" },
+  { label: "Vacation" },
+  { label: "week 1" },
+  { label: "week 2" },
+  { label: "week 3" },
+  { label: "week 4" },
+  { label: "week 5" },
+  { label: "week 6" },
+  { label: "week 7" },
+  { label: "Mid exam" },
+  { label: "week 9" },
+  { label: "week 10" },
+  { label: "week 11" },
+  { label: "week 12" },
+  { label: "week 13" },
+  { label: "week 14" },
+  { label: "Study leave" },
+  { label: "Examination" },
+  { label: "Vacation" },
+  { label: "week 1" },
+  { label: "week 2" },
+  { label: "week 3" },
+  { label: "week 4" },
+  { label: "week 5" },
+  { label: "week 6" },
+  { label: "week 7" },
+  { label: "Mid exam" },
+  { label: "week 9" },
+  { label: "week 10" },
+  { label: "week 11" },
+  { label: "week 12" },
+  { label: "week 13" },
+  { label: "week 14" },
+  { label: "Study leave" },
+  { label: "Examination" },
+  { label: "Vacation" },
 ];
 
 function Calendar({}: Props) {
   const [clicked, setClicked] = useState(false);
   const [week, setWeek] = useState(0);
   const [index, setIndex] = useState(0);
+
+  function classNames(...classes: any[]) {
+    return classes.filter(Boolean).join(" ");
+  }
+
+  // const date = new Date();
+  // console.log(date);
+
+  // const year = addYears(date, 1);
+  // console.log(year);
+
+  // function getWeeksDiff(startDate, endDate) {
+  //   const msInWeek = 1000 * 60 * 60 * 24 * 7;
+
+  //   return Math.round(Math.abs(endDate - startDate) / msInWeek);
+  // }
+
+  // console.log(getWeeksDiff(date, year));
 
   return (
     <div className="max-w-[1200px] mb-12 ">
@@ -123,10 +128,16 @@ function Calendar({}: Props) {
                 setWeek(week);
                 setIndex(i);
               }}
-              className="flex items-center h-8 col-span-4 bg-gray-200 border border-gray-300 rounded-md dark:text-gray-300 dark:bg-darkTheme border-1"
+              className={classNames(
+                val.label === "Vacation" && "bg-green-200",
+                val.label === "Examination" && "bg-red-200",
+                val.label === "Mid exam" && "bg-red-200",
+                val.label === "Study leave" && "bg-orange-200",
+                "flex items-center h-8 col-span-4 bg-gray-200 border border-gray-300 rounded-md dark:text-gray-300 dark:bg-darkTheme border-1"
+              )}
             >
               <div className="px-3">*</div>
-              <p className="mx-auto">Holiday</p>{" "}
+              <p className="mx-auto cursor-pointer">{val.label}</p>{" "}
             </div>
             {clicked && index === i ? <WeekSummery {...{ weekNo: i + 1 }} /> : null}
           </>

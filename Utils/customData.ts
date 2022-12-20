@@ -3,6 +3,7 @@ import { week, deadlineType } from "./types";
 export const WeekData: week[] = [
   {
     id: 1,
+    weekType: null,
     monday: {
       tasks: [
         {
@@ -38,6 +39,7 @@ export const WeekData: week[] = [
   },
   {
     id: 2,
+    weekType: null,
     wednesday: {
       tasks: [
         {
@@ -73,6 +75,7 @@ export const WeekData: week[] = [
   },
   {
     id: 3,
+    weekType: null,
     monday: {
       tasks: [
         {
@@ -90,7 +93,7 @@ export const WeekData: week[] = [
           department: ["Computer Engineering"],
           deadlineName: "Assignment",
           due: "11:59pm",
-          moduleName: "Datamining-EC0960",
+          moduleName: "Data mining-EC0960",
           type: deadlineType.assignment,
         },
       ],
@@ -108,6 +111,7 @@ export const WeekData: week[] = [
   },
   {
     id: 4,
+    weekType: null,
     monday: {
       tasks: [
         {
@@ -132,6 +136,7 @@ export const WeekData: week[] = [
   },
   {
     id: 5,
+    weekType: null,
     monday: {
       tasks: [
         {
@@ -149,7 +154,7 @@ export const WeekData: week[] = [
           department: ["Computer Engineering"],
           deadlineName: "Assignment",
           due: "11:59pm",
-          moduleName: "Datamining-EC0960",
+          moduleName: "Data mining-EC0960",
           type: deadlineType.assignment,
         },
       ],

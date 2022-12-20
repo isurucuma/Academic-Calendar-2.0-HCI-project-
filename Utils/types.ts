@@ -18,6 +18,7 @@ export interface day {
 
 export interface week {
   id: number;
+  weekType: string | null;
   monday?: day;
   tuesday?: day;
   wednesday?: day;

@@ -11,7 +11,7 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
   const filter = useContext(filterOn);
 
   const [loading, isLoading] = React.useState(true);
-  const [weekData, setWeekData] = React.useState<week>({ id: 0 });
+  const [weekData, setWeekData] = React.useState<week>({ id: 0, weekType: null });
 
   React.useEffect(() => {
     setTimeout(() => {

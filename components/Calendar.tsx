@@ -65,16 +65,12 @@ function Calendar({}: Props) {
   function getDayFormat(date: string) {
     // console.log(getDay(new Date(date)));
     let dayPrefix;
-    if (getDate(new Date(date)) === 1) {
-      dayPrefix = "st";
-    } else if (getDate(new Date(date)) === 2) {
-      dayPrefix = "nd";
-    } else dayPrefix = "th";
-    return `${getDate(new Date(date))}${dayPrefix}  ${monthNames[getMonth(new Date(date))]}`;
+
+    return `${getDate(new Date(date))} ${monthNames[getMonth(new Date(date))]}`;
   }
 
-  // const year = addYears(date, 1);
-  console.log(getDate(new Date("2023-01-09")));
+  // // const year = addYears(date, 1);
+  // console.log(getDate(new Date("2023-01-09")));
 
   // function getWeeksDiff(startDate, endDate) {
   //   const msInWeek = 1000 * 60 * 60 * 24 * 7;
@@ -106,7 +102,7 @@ function Calendar({}: Props) {
             Dates
           </div>
         </div>
-        <div className="justify-between hidden col-span-4 mb-2 lg:max-[2000px]:flex">
+        <div className="justify-between hidden gap-8 col-span-4 mb-2 lg:max-[2000px]:flex">
           <Filters />
         </div>
         <div className="justify-center flex col-span-4 mb-2 lg:max-[2000px]:hidden text-gray-400">
@@ -118,10 +114,10 @@ function Calendar({}: Props) {
         {weeks.map((val, i) => (
           <>
             {/* {console.log(val.startDate, val.endDate)} */}
-            <div className="flex items-center h-8 text-sm bg-gray-200 border border-gray-300 rounded-md dark:text-gray-300 dark:bg-darkTheme border-1 md:text-md">
+            <div className="flex items-center h-8 text-xs bg-gray-200 border border-gray-300 rounded-md md:text-sm dark:text-gray-300 dark:bg-darkTheme border-1 md:text-md">
               <p className="mx-auto">{getDayFormat(val.startDate)}</p>
             </div>
-            <div className="flex items-center h-8 text-sm bg-gray-200 border border-gray-300 rounded-md dark:text-gray-300 dark:bg-darkTheme border-1 md:text-md">
+            <div className="flex items-center h-8 text-xs bg-gray-200 border border-gray-300 rounded-md md:text-sm dark:text-gray-300 dark:bg-darkTheme border-1 md:text-md">
               <p className="mx-auto">{getDayFormat(val.endDate)}</p>
             </div>
             <div

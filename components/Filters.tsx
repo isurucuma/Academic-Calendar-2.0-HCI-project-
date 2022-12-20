@@ -1,13 +1,14 @@
 import React from "react";
 import DropDown from "./DropDown";
+import FilterList from "./ListBox";
 
 type Props = {};
 
 function Filters({}: Props) {
   return (
     <>
-      <div className="items-center justify-center w-full gap-4 px-12 mx-auto md:flex ">
-        <DropDown
+      <div className="items-center justify-center w-full gap-4 mx-auto md:flex ">
+        <FilterList
           items={[
             { name: "2023", value: "2023" },
             { name: "2022", value: "2022" },
@@ -17,7 +18,7 @@ function Filters({}: Props) {
           ]}
           label={"Year"}
         />
-        <DropDown
+        <FilterList
           items={[
             { name: "E18", value: "E18" },
             { name: "E19", value: "E19" },
@@ -27,7 +28,7 @@ function Filters({}: Props) {
           ]}
           label={"Batch"}
         />
-        <DropDown
+        <FilterList
           items={[
             { name: "Common", value: "Common" },
             { name: "Computer Engineering", value: "Computer Engineering" },

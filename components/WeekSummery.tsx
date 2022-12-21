@@ -20,7 +20,7 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
     setTimeout(() => {
       isLoading(false);
     }, 1000);
-    fetch(`http://10.102.11.59:3000/api/getWeekData/${weekNo}`)
+    fetch(`http://10.102.11.13:3000/api/getWeekData/${weekNo}`)
       // fetch(`http://localhost:3000/api/getWeekData/${weekNo}`)
       .then((res) => res.json())
       .then((data: week) => {

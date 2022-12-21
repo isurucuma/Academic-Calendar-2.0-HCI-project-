@@ -27,7 +27,6 @@ function Content({}: Props) {
 
   return (
     <>
-      (
       <main>
         <div className="mx-5 my-12 ">
           <div className="flex justify-center gap-10 mx-auto">
@@ -39,7 +38,6 @@ function Content({}: Props) {
           </div>
         </div>
       </main>
-      )
     </>
   );
 }

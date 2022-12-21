@@ -208,10 +208,19 @@ function Calendar({}: Props) {
               )}
             >
               <div className="absolute px-3 flex flex-row">
-                {i === 0 || i === 1 ? (
+                {i === 0 ? (
                   <>
                     <div className="w-2 h-2 mx-2 bg-blue-500 rounded-full"></div>
                     <div className="w-2 h-2 mx-2 bg-pink-400 rounded-full"></div>
+                    <div className="w-2 h-2 mx-2 bg-orange-400 rounded-full"></div>
+                  </>
+                ) : i === 1 ? (
+                  <>
+                    <div className="w-2 h-2 mx-2 bg-blue-500 rounded-full"></div>
+                    <div className="w-2 h-2 mx-2 bg-orange-400 rounded-full"></div>
+                  </>
+                ) : i === 2 ? (
+                  <>
                     <div className="w-2 h-2 mx-2 bg-orange-400 rounded-full"></div>
                   </>
                 ) : (

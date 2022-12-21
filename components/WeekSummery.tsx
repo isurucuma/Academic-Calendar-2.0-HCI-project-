@@ -69,6 +69,7 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
               <div className="flex items-center justify-center border-b border-l border-gray-400 dark:text-white dark:border-white dark:bg-darkTheme border-1">
                 Friday
               </div>
+
               <div className="flex items-center justify-start p-3 text-sm border-gray-400 md:h-20 border-1">
                 {weekData.tuesday?.tasks &&
                   weekData.tuesday.tasks.map((item, index) => {
@@ -94,6 +95,7 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                     );
                   })}
               </div>
+
               <div className="flex items-center justify-start h-20 p-3 text-sm border-l border-gray-400 border-1">
                 {weekData.monday?.tasks &&
                   weekData.monday.tasks.map((item, index) => {

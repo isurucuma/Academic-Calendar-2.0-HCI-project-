@@ -62,53 +62,22 @@ export const WeekData: week[] = [
         },
       ],
     },
-    friday: {
+  },
+  {
+    id: 3,
+    weekType: null,
+    monday: {
       tasks: [
         {
-          department: ["Common"],
-          deadlineName: "Exam Registration",
+          department: ["Computer Engineering"],
+          deadlineName: "Lab-03",
           due: "11:59pm",
-          type: deadlineType.other,
+          moduleName: "HCI-EC0950",
+          type: deadlineType.lab,
         },
       ],
     },
   },
-  // {
-  //   id: 3,
-  //   weekType: null,
-  //   monday: {
-  //     tasks: [
-  //       {
-  //         department: ["Computer Engineering"],
-  //         deadlineName: "Lab-03",
-  //         due: "11:59pm",
-  //         moduleName: "HCI-EC0950",
-  //         type: deadlineType.lab,
-  //       },
-  //     ],
-  //   },
-  //   thursday: {
-  //     tasks: [
-  //       {
-  //         department: ["Computer Engineering"],
-  //         deadlineName: "Assignment",
-  //         due: "11:59pm",
-  //         moduleName: "Data mining-EC0960",
-  //         type: deadlineType.assignment,
-  //       },
-  //     ],
-  //   },
-  //   friday: {
-  //     tasks: [
-  //       {
-  //         department: ["Computer Engineering"],
-  //         deadlineName: "Exam Registration",
-  //         due: "11:59pm",
-  //         type: deadlineType.other,
-  //       },
-  //     ],
-  //   },
-  // },
   // {
   //   id: 4,
   //   weekType: null,

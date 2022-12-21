@@ -37,7 +37,7 @@ const FilterList: FunctionComponent<Props> = ({ items, label }: Props) => {
       });
     }
 
-    // location.reload();
+    location.reload();
   };
   return (
     <div className="w-56">

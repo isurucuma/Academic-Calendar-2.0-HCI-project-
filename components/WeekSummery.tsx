@@ -11,13 +11,16 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
   const filter = useContext(filterOn);
 
   const [loading, isLoading] = React.useState(true);
-  const [weekData, setWeekData] = React.useState<week>({ id: 0, weekType: null });
+  const [weekData, setWeekData] = React.useState<week>({
+    id: 0,
+    weekType: null,
+  });
 
   React.useEffect(() => {
     setTimeout(() => {
       isLoading(false);
     }, 1000);
-    fetch(`http://192.168.8.103:3000/api/getWeekData/${weekNo}`)
+    fetch(`http://localhost:3000/api/getWeekData/${weekNo}`)
       // fetch(`http://localhost:3000/api/getWeekData/${weekNo}`)
       .then((res) => res.json())
       .then((data: week) => {
@@ -25,6 +28,9 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
 
         setWeekData(data);
         // isLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
 
@@ -74,11 +80,15 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                     }
                     return (
                       <div key={index}>
-                        <div className={` w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                        <div
+                          className={` w-3 h-3 mx-3 ${color} rounded-full`}
+                        ></div>
                         <div className="">
                           <p className="dark:text-white">{item.deadlineName}</p>
                           <p className="dark:text-white">{item.due}</p>
-                          {item.moduleName ? <p className="dark:text-white">{item.moduleName}</p> : null}
+                          {item.moduleName ? (
+                            <p className="dark:text-white">{item.moduleName}</p>
+                          ) : null}
                         </div>
                       </div>
                     );
@@ -96,11 +106,15 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                     }
                     return (
                       <div key={index}>
-                        <div className={` w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                        <div
+                          className={` w-3 h-3 mx-3 ${color} rounded-full`}
+                        ></div>
                         <div className="">
                           <p className="dark:text-white">{item.deadlineName}</p>
                           <p className="dark:text-white">{item.due}</p>
-                          {item.moduleName ? <p className="dark:text-white">{item.moduleName}</p> : null}
+                          {item.moduleName ? (
+                            <p className="dark:text-white">{item.moduleName}</p>
+                          ) : null}
                         </div>
                       </div>
                     );
@@ -117,11 +131,15 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                     }
                     return (
                       <div key={index}>
-                        <div className={` w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                        <div
+                          className={` w-3 h-3 mx-3 ${color} rounded-full`}
+                        ></div>
                         <div className="">
                           <p className="dark:text-white">{item.deadlineName}</p>
                           <p className="dark:text-white">{item.due}</p>
-                          {item.moduleName ? <p className="dark:text-white">{item.moduleName}</p> : null}
+                          {item.moduleName ? (
+                            <p className="dark:text-white">{item.moduleName}</p>
+                          ) : null}
                         </div>
                       </div>
                     );
@@ -138,11 +156,15 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                     }
                     return (
                       <div key={index}>
-                        <div className={` w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                        <div
+                          className={` w-3 h-3 mx-3 ${color} rounded-full`}
+                        ></div>
                         <div className="">
                           <p className="dark:text-white">{item.deadlineName}</p>
                           <p className="dark:text-white">{item.due}</p>
-                          {item.moduleName ? <p className="dark:text-white">{item.moduleName}</p> : null}
+                          {item.moduleName ? (
+                            <p className="dark:text-white">{item.moduleName}</p>
+                          ) : null}
                         </div>
                       </div>
                     );
@@ -159,11 +181,15 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                     }
                     return (
                       <div key={index}>
-                        <div className={` w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                        <div
+                          className={` w-3 h-3 mx-3 ${color} rounded-full`}
+                        ></div>
                         <div className="">
                           <p className="dark:text-white">{item.deadlineName}</p>
                           <p className="dark:text-white">{item.due}</p>
-                          {item.moduleName ? <p className="dark:text-white">{item.moduleName}</p> : null}
+                          {item.moduleName ? (
+                            <p className="dark:text-white">{item.moduleName}</p>
+                          ) : null}
                         </div>
                       </div>
                     );
@@ -193,12 +219,23 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                           color = "bg-yellow-500";
                         }
                         return (
-                          <div key={index} className="flex items-center gap-3 px-2">
-                            <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                          <div
+                            key={index}
+                            className="flex items-center gap-3 px-2"
+                          >
+                            <div
+                              className={`w-3 h-3 mx-3 ${color} rounded-full`}
+                            ></div>
                             <div className="">
-                              <p className="dark:text-white">{item.deadlineName}</p>
+                              <p className="dark:text-white">
+                                {item.deadlineName}
+                              </p>
                               <p className="dark:text-white">{item.due}</p>
-                              {item.moduleName ? <p className="dark:text-white">{item.moduleName}</p> : null}
+                              {item.moduleName ? (
+                                <p className="dark:text-white">
+                                  {item.moduleName}
+                                </p>
+                              ) : null}
                             </div>
                           </div>
                         );
@@ -223,12 +260,23 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                           color = "bg-yellow-500";
                         }
                         return (
-                          <div key={index} className="flex items-center gap-3 px-2">
-                            <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                          <div
+                            key={index}
+                            className="flex items-center gap-3 px-2"
+                          >
+                            <div
+                              className={`w-3 h-3 mx-3 ${color} rounded-full`}
+                            ></div>
                             <div className="">
-                              <p className="dark:text-white">{item.deadlineName}</p>
+                              <p className="dark:text-white">
+                                {item.deadlineName}
+                              </p>
                               <p className="dark:text-white">{item.due}</p>
-                              {item.moduleName ? <p className="dark:text-white">{item.moduleName}</p> : null}
+                              {item.moduleName ? (
+                                <p className="dark:text-white">
+                                  {item.moduleName}
+                                </p>
+                              ) : null}
                             </div>
                           </div>
                         );
@@ -251,12 +299,23 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                           color = "bg-yellow-500";
                         }
                         return (
-                          <div key={index} className="flex items-center gap-3 px-2">
-                            <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                          <div
+                            key={index}
+                            className="flex items-center gap-3 px-2"
+                          >
+                            <div
+                              className={`w-3 h-3 mx-3 ${color} rounded-full`}
+                            ></div>
                             <div className="">
-                              <p className="dark:text-white">{item.deadlineName}</p>
+                              <p className="dark:text-white">
+                                {item.deadlineName}
+                              </p>
                               <p className="dark:text-white">{item.due}</p>
-                              {item.moduleName ? <p className="dark:text-white">{item.moduleName}</p> : null}
+                              {item.moduleName ? (
+                                <p className="dark:text-white">
+                                  {item.moduleName}
+                                </p>
+                              ) : null}
                             </div>
                           </div>
                         );
@@ -280,12 +339,23 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                           color = "bg-yellow-500";
                         }
                         return (
-                          <div key={index} className="flex items-center gap-3 px-2">
-                            <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                          <div
+                            key={index}
+                            className="flex items-center gap-3 px-2"
+                          >
+                            <div
+                              className={`w-3 h-3 mx-3 ${color} rounded-full`}
+                            ></div>
                             <div className="">
-                              <p className="dark:text-white">{item.deadlineName}</p>
+                              <p className="dark:text-white">
+                                {item.deadlineName}
+                              </p>
                               <p className="dark:text-white">{item.due}</p>
-                              {item.moduleName ? <p className="dark:text-white">{item.moduleName}</p> : null}
+                              {item.moduleName ? (
+                                <p className="dark:text-white">
+                                  {item.moduleName}
+                                </p>
+                              ) : null}
                             </div>
                           </div>
                         );
@@ -309,12 +379,23 @@ const WeekSummery: FunctionComponent<Props> = ({ weekNo }: Props) => {
                           color = "bg-yellow-500";
                         }
                         return (
-                          <div key={index} className="flex items-center gap-3 px-2">
-                            <div className={`w-3 h-3 mx-3 ${color} rounded-full`}></div>
+                          <div
+                            key={index}
+                            className="flex items-center gap-3 px-2"
+                          >
+                            <div
+                              className={`w-3 h-3 mx-3 ${color} rounded-full`}
+                            ></div>
                             <div className="">
-                              <p className="dark:text-white">{item.deadlineName}</p>
+                              <p className="dark:text-white">
+                                {item.deadlineName}
+                              </p>
                               <p className="dark:text-white">{item.due}</p>
-                              {item.moduleName ? <p className="dark:text-white">{item.moduleName}</p> : null}
+                              {item.moduleName ? (
+                                <p className="dark:text-white">
+                                  {item.moduleName}
+                                </p>
+                              ) : null}
                             </div>
                           </div>
                         );

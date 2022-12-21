@@ -9,7 +9,9 @@ type Props = {
 function Header({ setIsDark, isDark }: Props) {
   return (
     <div className="flex items-center justify-between w-full h-20 p-4 text-gray-700 border-b border-gray-300 bg-slate-300 border-1 dark:bg-darkTheme dark:text-gray-200">
-      <h1 className="text-lg">Academic Calendar</h1>
+      <h1 className="text-lg">
+        <a href="/">Academic Calendar</a>
+      </h1>
       <div className="flex gap-4">
         <ThemeSwitch
           className=""
@@ -18,7 +20,9 @@ function Header({ setIsDark, isDark }: Props) {
             console.log("isDark: ", isDark);
           }}
         />
-        <p className="items-center hidden text-sm md:flex">Home/Academic Calendar</p>
+        <p className="items-center hidden text-sm md:flex">
+          Home/Academic Calendar
+        </p>
       </div>
     </div>
   );

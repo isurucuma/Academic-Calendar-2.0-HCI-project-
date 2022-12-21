@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { filter, FilterContextType } from "../Utils/types";
 import Calendar from "./Calendar";
 import Legend from "./Legend";

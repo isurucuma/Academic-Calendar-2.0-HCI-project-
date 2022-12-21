@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getMonth, getDate } from "date-fns";
 
 import Filters from "./Filters";
 import DialogSelect from "./DropDownRes";
 import WeekSummery from "./WeekSummery";
+import { week, deadline, deadlineType } from "../Utils/types";
 
 type Props = {};
 const weeks = [
@@ -51,12 +52,40 @@ const weeks = [
   { label: "Vacation", startDate: "2023-08-21", endDate: "2023-08-25" },
 ];
 
-const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+const monthNames = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "June",
+  "July",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
 function Calendar({}: Props) {
   const [clicked, setClicked] = useState(false);
   const [week, setWeek] = useState(0);
   const [index, setIndex] = useState(0);
+  // const [allWeekData, setAllWeekData] = useState<week[]>();
+
+  // useEffect(() => {
+  //   let weekData: week[] = [];
+  //   weeks.forEach((week, index) => {
+  //     fetch(`http://localhost:3000/api/getWeekData/${index}`)
+  //       .then((res) => res.json())
+  //       .then((data: week) => {
+  //         weekData[index] = data;
+  //       });
+  //   });
+  //   setAllWeekData(weekData);
+  //   console.log("Printing all data");
+  //   console.log(allWeekData);
+  // }, []);
 
   function classNames(...classes: any[]) {
     return classes.filter(Boolean).join(" ");
@@ -80,20 +109,60 @@ function Calendar({}: Props) {
 
   // console.log(getWeeksDiff(date, year));
 
+  function getColor(item: deadline) {
+    let color = "bg-pink-500";
+    if (item.type === deadlineType.assignment) {
+      color = "bg-blue-500";
+    }
+    if (item.type === deadlineType.lab) {
+      color = "bg-yellow-500";
+    }
+    return color;
+  }
+
+  // function getAllDeadlines(index: number) {
+  //   let weekData = allWeekData ? allWeekData[index];
+  //   let deadlines: deadline[] = [];
+
+  //   weekData.monday?.tasks?.forEach((deadline) => {
+  //     deadlines.push(deadline);
+  //   });
+  //   weekData.tuesday?.tasks?.forEach((deadline) => {
+  //     deadlines.push(deadline);
+  //   });
+  //   weekData.wednesday?.tasks?.forEach((deadline) => {
+  //     deadlines.push(deadline);
+  //   });
+  //   weekData.thursday?.tasks?.forEach((deadline) => {
+  //     deadlines.push(deadline);
+  //   });
+  //   weekData.friday?.tasks?.forEach((deadline) => {
+  //     deadlines.push(deadline);
+  //   });
+
+  //   return deadlines;
+  // }
+
   return (
     <div className="max-w-[1200px] mb-12 ">
       <div className="flex items-center justify-center gap-4 mb-6 ">
         <div className="flex items-center mb-4">
           <div className="w-2 h-2 bg-blue-500 rounded-full min-w-2"></div>{" "}
-          <p className="px-3 text-sm dark:text-white md:text-md">Assignment Deadlines</p>
+          <p className="px-3 text-sm dark:text-white md:text-md">
+            Assignment Deadlines
+          </p>
         </div>
         <div className="flex items-center mb-4">
           <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>{" "}
-          <p className="px-3 text-sm dark:text-white md:text-md">Lab Schedules</p>
+          <p className="px-3 text-sm dark:text-white md:text-md">
+            Lab Schedules
+          </p>
         </div>
         <div className="flex items-center mb-4">
           <div className="w-2 h-2 bg-pink-500 rounded-full"></div>{" "}
-          <p className="px-3 text-sm dark:text-white md:text-md">Other Deadlines</p>
+          <p className="px-3 text-sm dark:text-white md:text-md">
+            Other Deadlines
+          </p>
         </div>
       </div>
       <div className="grid grid-cols-6">
@@ -127,17 +196,33 @@ function Calendar({}: Props) {
                 setIndex(i);
               }}
               className={classNames(
-                val.label === "Vacation" && "bg-green-200 dark:bg-green-400 dark:text-black ",
-                val.label === "Examination" && "bg-red-200 dark:bg-red-400 dark:text-black ",
-                val.label === "Mid exam" && "bg-red-200 dark:bg-red-400 dark:text-black ",
-                val.label === "Study leave" && "bg-orange-200 dark:bg-orange-400 dark:text-black ",
+                val.label === "Vacation" &&
+                  "bg-green-200 dark:bg-green-400 dark:text-black ",
+                val.label === "Examination" &&
+                  "bg-red-200 dark:bg-red-400 dark:text-black ",
+                val.label === "Mid exam" &&
+                  "bg-red-200 dark:bg-red-400 dark:text-black ",
+                val.label === "Study leave" &&
+                  "bg-orange-200 dark:bg-orange-400 dark:text-black ",
                 "flex items-center h-8 col-span-4 bg-gray-200 border border-gray-300 rounded-md dark:text-gray-300 dark:bg-darkTheme border-1"
               )}
             >
-              <div className="px-3">*</div>
+              <div className="absolute px-3 flex flex-row">
+                {i === 0 || i === 1 ? (
+                  <>
+                    <div className="w-2 h-2 mx-2 bg-blue-500 rounded-full"></div>
+                    <div className="w-2 h-2 mx-2 bg-pink-400 rounded-full"></div>
+                    <div className="w-2 h-2 mx-2 bg-orange-400 rounded-full"></div>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </div>
               <p className="mx-auto cursor-pointer">{val.label}</p>{" "}
             </div>
-            {clicked && index === i ? <WeekSummery {...{ weekNo: i + 1 }} /> : null}
+            {clicked && index === i ? (
+              <WeekSummery {...{ weekNo: i + 1 }} />
+            ) : null}
           </>
         ))}
       </div>

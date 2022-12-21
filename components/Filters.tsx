@@ -2,9 +2,11 @@ import React from "react";
 import DropDown from "./DropDown";
 import FilterList from "./ListBox";
 
-type Props = {};
+type Props = {
+  setLoading: (isLoading: boolean) => void;
+};
 
-function Filters({}: Props) {
+function Filters({ setLoading }: Props) {
   return (
     <>
       <div className="items-center justify-center w-full gap-4 mx-auto md:flex ">
@@ -17,6 +19,7 @@ function Filters({}: Props) {
             { name: "2019", value: "2019" },
           ]}
           label={"Year"}
+          setLoading={setLoading}
         />
         <FilterList
           items={[
@@ -27,6 +30,7 @@ function Filters({}: Props) {
             { name: "E22", value: "E22" },
           ]}
           label={"Batch"}
+          setLoading={setLoading}
         />
         <FilterList
           items={[
@@ -34,9 +38,13 @@ function Filters({}: Props) {
             { name: "Computer Engineering", value: "Computer Engineering" },
             { name: "EEE", value: "EEE" },
             { name: "Civil Engineering", value: "Civil Engineering" },
-            { name: "Inter Disciplinary Studies", value: "Inter Disciplinary Studies" },
+            {
+              name: "Inter Disciplinary Studies",
+              value: "Inter Disciplinary Studies",
+            },
           ]}
           label={"Dept"}
+          setLoading={setLoading}
         />
       </div>
     </>

@@ -23,18 +23,24 @@ function Content({}: Props) {
     Dept: "Computer Engineering",
   });
 
-  return (
-    <main>
-      <div className="mx-5 my-12 ">
-        <div className="flex justify-center gap-10 mx-auto">
-          <filterOn.Provider value={{ filters, setFilters }}>
-            <Calendar />
-          </filterOn.Provider>
+  const [isLoading, setIsLoading] = useState(false);
 
-          {/* <Legend /> */}
+  return (
+    <>
+      (
+      <main>
+        <div className="mx-5 my-12 ">
+          <div className="flex justify-center gap-10 mx-auto">
+            <filterOn.Provider value={{ filters, setFilters }}>
+              <Calendar value={isLoading} setLoading={setIsLoading} />
+            </filterOn.Provider>
+
+            {/* <Legend /> */}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+      )
+    </>
   );
 }
 

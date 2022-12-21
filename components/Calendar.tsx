@@ -6,7 +6,10 @@ import DialogSelect from "./DropDownRes";
 import WeekSummery from "./WeekSummery";
 import { week, deadline, deadlineType } from "../Utils/types";
 
-type Props = {};
+type Props = {
+  value: boolean;
+  setLoading: (isLoading: boolean) => void;
+};
 const weeks = [
   { label: "week 1", startDate: "2023-01-02", endDate: "2023-01-06" },
   { label: "week 2", startDate: "2023-01-09", endDate: "2023-01-13" },
@@ -67,7 +70,7 @@ const monthNames = [
   "Dec",
 ];
 
-function Calendar({}: Props) {
+function Calendar({ value, setLoading }: Props) {
   const [clicked, setClicked] = useState(false);
   const [week, setWeek] = useState(0);
   const [index, setIndex] = useState(0);
@@ -172,68 +175,110 @@ function Calendar({}: Props) {
           </div>
         </div>
         <div className="justify-between hidden gap-8 col-span-4 mb-2 lg:max-[2000px]:flex">
-          <Filters />
+          <Filters setLoading={setLoading} />
         </div>
         <div className="justify-center flex col-span-4 mb-2 lg:max-[2000px]:hidden text-gray-400">
-          <DialogSelect />
+          <DialogSelect setLoading={setLoading} />
         </div>
       </div>
 
       <div className="grid grid-cols-6 gap-1 sm:gap-2 md:gap-4 max-w-[1224px]">
-        {weeks.map((val, i) => (
-          <>
-            {/* {console.log(val.startDate, val.endDate)} */}
-            <div className="flex items-center h-8 text-xs bg-gray-200 border border-gray-300 rounded-md md:text-sm dark:text-gray-300 dark:bg-darkTheme border-1 md:text-md">
-              <p className="mx-auto">{getDayFormat(val.startDate)}</p>
-            </div>
-            <div className="flex items-center h-8 text-xs bg-gray-200 border border-gray-300 rounded-md md:text-sm dark:text-gray-300 dark:bg-darkTheme border-1 md:text-md">
-              <p className="mx-auto">{getDayFormat(val.endDate)}</p>
-            </div>
-            <div
-              onClick={() => {
-                setClicked(true);
-                setWeek(week);
-                setIndex(i);
-              }}
-              className={classNames(
-                val.label === "Vacation" &&
-                  "bg-green-200 dark:bg-green-400 dark:text-black ",
-                val.label === "Examination" &&
-                  "bg-red-200 dark:bg-red-400 dark:text-black ",
-                val.label === "Mid exam" &&
-                  "bg-red-200 dark:bg-red-400 dark:text-black ",
-                val.label === "Study leave" &&
-                  "bg-orange-200 dark:bg-orange-400 dark:text-black ",
-                "flex items-center h-8 col-span-4 bg-gray-200 border border-gray-300 rounded-md dark:text-gray-300 dark:bg-darkTheme border-1"
-              )}
-            >
-              <div className="absolute px-3 flex flex-row">
-                {i === 0 ? (
-                  <>
-                    <div className="w-2 h-2 mx-2 bg-blue-500 rounded-full"></div>
-                    <div className="w-2 h-2 mx-2 bg-pink-400 rounded-full"></div>
-                    <div className="w-2 h-2 mx-2 bg-orange-400 rounded-full"></div>
-                  </>
-                ) : i === 1 ? (
-                  <>
-                    <div className="w-2 h-2 mx-2 bg-blue-500 rounded-full"></div>
-                    <div className="w-2 h-2 mx-2 bg-orange-400 rounded-full"></div>
-                  </>
-                ) : i === 2 ? (
-                  <>
-                    <div className="w-2 h-2 mx-2 bg-orange-400 rounded-full"></div>
-                  </>
-                ) : (
-                  <></>
-                )}
+        {value ? (
+          <div className="flex col-span-6 space-x-4 animate-pulse">
+            <div className="w-10 h-10 bg-gray-400 rounded-full"></div>
+            <div className="flex-1 py-1 space-y-6">
+              <div className="h-2 bg-gray-400 rounded"></div>
+              <div className="space-y-3">
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="h-2 col-span-2 bg-gray-400 rounded"></div>
+                  <div className="h-2 col-span-1 bg-gray-400 rounded"></div>
+                </div>
+                <div className="h-2 bg-gray-400 rounded"></div>
               </div>
-              <p className="mx-auto cursor-pointer">{val.label}</p>{" "}
+              <div className="h-2 bg-gray-400 rounded"></div>
+              <div className="space-y-3">
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="h-2 col-span-2 bg-gray-400 rounded"></div>
+                  <div className="h-2 col-span-1 bg-gray-400 rounded"></div>
+                </div>
+                <div className="h-2 bg-gray-400 rounded"></div>
+              </div>
+              <div className="h-2 bg-gray-400 rounded"></div>
+              <div className="space-y-3">
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="h-2 col-span-2 bg-gray-400 rounded"></div>
+                  <div className="h-2 col-span-1 bg-gray-400 rounded"></div>
+                </div>
+                <div className="h-2 bg-gray-400 rounded"></div>
+              </div>
+              <div className="h-2 bg-gray-400 rounded"></div>
+              <div className="space-y-3">
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="h-2 col-span-2 bg-gray-400 rounded"></div>
+                  <div className="h-2 col-span-1 bg-gray-400 rounded"></div>
+                </div>
+                <div className="h-2 bg-gray-400 rounded"></div>
+              </div>
             </div>
-            {clicked && index === i ? (
-              <WeekSummery {...{ weekNo: i + 1 }} />
-            ) : null}
+          </div>
+        ) : (
+          <>
+            {weeks.map((val, i) => (
+              <>
+                {/* {console.log(val.startDate, val.endDate)} */}
+                <div className="flex items-center h-8 text-xs bg-gray-200 border border-gray-300 rounded-md md:text-sm dark:text-gray-300 dark:bg-darkTheme border-1 md:text-md">
+                  <p className="mx-auto">{getDayFormat(val.startDate)}</p>
+                </div>
+                <div className="flex items-center h-8 text-xs bg-gray-200 border border-gray-300 rounded-md md:text-sm dark:text-gray-300 dark:bg-darkTheme border-1 md:text-md">
+                  <p className="mx-auto">{getDayFormat(val.endDate)}</p>
+                </div>
+                <div
+                  onClick={() => {
+                    setClicked(!clicked);
+                    setWeek(week);
+                    setIndex(i);
+                  }}
+                  className={classNames(
+                    val.label === "Vacation" &&
+                      "bg-green-200 dark:bg-green-400 dark:text-black ",
+                    val.label === "Examination" &&
+                      "bg-red-200 dark:bg-red-400 dark:text-black ",
+                    val.label === "Mid exam" &&
+                      "bg-red-200 dark:bg-red-400 dark:text-black ",
+                    val.label === "Study leave" &&
+                      "bg-orange-200 dark:bg-orange-400 dark:text-black ",
+                    "flex items-center h-8 col-span-4 bg-gray-200 border border-gray-300 rounded-md dark:text-gray-300 dark:bg-darkTheme border-1 cursor-pointer"
+                  )}
+                >
+                  <div className="absolute px-3 flex flex-row">
+                    {i === 0 ? (
+                      <>
+                        <div className="w-2 h-2 mx-2 bg-blue-500 rounded-full"></div>
+                        <div className="w-2 h-2 mx-2 bg-pink-400 rounded-full"></div>
+                        <div className="w-2 h-2 mx-2 bg-orange-400 rounded-full"></div>
+                      </>
+                    ) : i === 1 ? (
+                      <>
+                        <div className="w-2 h-2 mx-2 bg-blue-500 rounded-full"></div>
+                        <div className="w-2 h-2 mx-2 bg-orange-400 rounded-full"></div>
+                      </>
+                    ) : i === 2 ? (
+                      <>
+                        <div className="w-2 h-2 mx-2 bg-orange-400 rounded-full"></div>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                  <p className="mx-auto cursor-pointer">{val.label}</p>{" "}
+                </div>
+                {clicked && index === i ? (
+                  <WeekSummery {...{ weekNo: i + 1 }} />
+                ) : null}
+              </>
+            ))}
           </>
-        ))}
+        )}
       </div>
     </div>
   );

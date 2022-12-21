@@ -10,15 +10,22 @@ interface Item {
 interface Props {
   label: string;
   items: Item[];
+  setLoading: (isLoading: boolean) => void;
 }
 
-const FilterList: FunctionComponent<Props> = ({ items, label }: Props) => {
+const FilterList: FunctionComponent<Props> = ({
+  items,
+  label,
+  setLoading,
+}: Props) => {
   const [selected, setSelected] = useState(items[0]);
   const context = useContext(filterOn);
   console.log(context.filters);
   // console.log(selected);
 
   const handleChange = (selected: any) => {
+    setLoading(true);
+
     setSelected(selected);
     if (label === "Batch") {
       context.setFilters({
@@ -37,7 +44,9 @@ const FilterList: FunctionComponent<Props> = ({ items, label }: Props) => {
       });
     }
 
-    location.reload();
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
   return (
     <div className="w-56">

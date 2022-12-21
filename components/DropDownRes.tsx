@@ -12,14 +12,21 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Filters from "./Filters";
 
-export default function DialogSelect() {
+type Props = {
+  setLoading: (isLoading: boolean) => void;
+};
+
+export default function DialogSelect({ setLoading }: Props) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = (event: React.SyntheticEvent<unknown>, reason?: string) => {
+  const handleClose = (
+    event: React.SyntheticEvent<unknown>,
+    reason?: string
+  ) => {
     if (reason !== "backdropClick") {
       setOpen(false);
     }
@@ -38,10 +45,15 @@ export default function DialogSelect() {
       >
         Filter options
       </Button>
-      <Dialog disableEscapeKeyDown open={open} onClose={handleClose} className="dark:bg-darkTheme">
+      <Dialog
+        disableEscapeKeyDown
+        open={open}
+        onClose={handleClose}
+        className="dark:bg-darkTheme"
+      >
         <DialogTitle>Choose filters</DialogTitle>
         <DialogContent>
-          <Filters />
+          <Filters setLoading={setLoading} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
